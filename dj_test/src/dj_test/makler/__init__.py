@@ -10,21 +10,22 @@ ur'(?u)(\d{7})', #7004516
 
 #Возвращаемый результат один 
 ROOM_COUNT_PATTERNS = [
-ur'(?u)(\d+)\s*-?\s*х?\s*ком\.?\s*квартиру',     #2- х ком. квартиру, 1 ком квартиру
+ur'(?u)(\d+)\s*х',					   
+ur'(?u)(\d+)\s*-?\s*х?\s*ком\.?\s*квартиру',	 #2- х ком. квартиру, 1 ком квартиру
 ur'(?u)(\d+)\s*комн\.?\s*(?:\w+\.?)?\s*кв\.?',   #4 комн самост. кв. #самост???
-ur'(?u)(\d+)\s*-?\s*к\.?\s*к?в?\.?',             #1- к, 4 к кв
+ur'(?u)(\d+)\s*-?\s*к\.?\s*к?в?\.?',			 #1- к, 4 к кв
 #u'(\d+) ком\.? кв\.?',
-#u'(\d+)\s*-\s*к\.?',    #1-к
+#u'(\d+)\s*-\s*к\.?',	#1-к
 #u'(\d+) комн\.?',
 ]
 
 COAST_PATTERNS = [
-ur'(?u)(\d+)\s*(у\.?\s*е\.?)/?\s*(месяц)?\.?',                     #300 у. е. 600уе
-ur'(?u)(\d+)\s*(грн)\s*/?\s*(месяц)?\.?'             #3000 грн/ месяц.  
+ur'(?u)(\d+)\s*(у\.?\s*е\.?)/?\s*(месяц)?\.?',					 #300 у. е. 600уе
+ur'(?u)(\d+)\s*(грн)\s*/?\s*(месяц)?\.?'			 #3000 грн/ месяц.  
 ]
 
 FLAT_SQUARE_PATTERNS = [
-ur'(?u)(\d+)\s*м\.?\s*к?в?\.?',                     #36 м. кв.                        
+ur'(?u)(\d+)\s*м\.?\s*к?в?\.?',					 #36 м. кв.						
 ]
 
 
@@ -35,22 +36,26 @@ FLAT_SQUARE_MATCHER = BaseMatcher(FLAT_SQUARE_PATTERNS, 'flat square')
 #ADDRESS_MATCHER = AddressMatcher()
 
 def dispatchCoast(result_set):
-    if len(result_set) != 3:
-        raise ValueError, 'Should be three values in result set: %s' % result_set
-    coast, currency, duration = result_set 
-    coast = int(coast)
-    currency = currency.replace(' ', '').replace('.', '')
-    if not duration:
-        duration = ''
-    return coast, currency, duration
+	if len(result_set) != 3:
+		raise ValueError, 'Should be three values in result set: %s' % result_set
+	coast, currency, duration = result_set 
+	coast = int(coast)
+	currency = currency.replace(' ', '').replace('.', '')
+	if not duration:
+		duration = ''
+	return coast, currency, duration
 
 def dispatchOneInt(result_set):
-    if len(result_set) != 1:
-        raise ValueError, 'Should be one value in result set: %s' % result_set
-    return int(result_set.pop())
+	if len(result_set) != 1:
+		raise ValueError, 'Should be one value in result set: %s' % result_set
+	return int(result_set.pop())
 
 def dispatchRoomCount(result_set):
-    return dispatchOneInt(result_set)
+	return dispatchOneInt(result_set)
 
 def dispatchSquare(result_set):
-    return dispatchOneInt(result_set)
+	return dispatchOneInt(result_set)
+
+def findRoomCount(input):
+	(result_set, updated_input) = ROOM_COUNT_MATCHER.match(input)
+	return dispatchRoomCount(result_set)
