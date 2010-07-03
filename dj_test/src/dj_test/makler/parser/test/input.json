@@ -4,8 +4,11 @@
 
    "roomCount": 2,
    "roomSquare": 36,
-   "coast": "300",
-   "currency" : "у.е.",
+   "coast": {
+   		"coast" : "300",
+   		"currency" : "у. е.",
+   		"period" : ""
+   },
    "address": {
        "street1": "Нежинская",
        "street2": ""
@@ -29,8 +32,11 @@
        "0974334605"
    ],
    "flatSquare" : "35/18/9м",
-   "coast" : "2500",
-   "currency" : "гр"
+   "coast": {
+   		"coast" : "2500",
+   		"currency" : "гр.",
+   		"period" : ""
+   }
 },
 
 "3" : {
@@ -47,7 +53,10 @@
        "096.487-72-05"
    ],
    "flatSquare" : "32/18/7",
-   "coast" : "1600",
-   "currency" : "грн"
+   "coast": {
+   		"coast" : "1600",
+   		"currency" : "грн.",
+   		"period" : ""
+   }
 }
 }

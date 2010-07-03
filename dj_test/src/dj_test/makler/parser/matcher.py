@@ -32,7 +32,7 @@ class BaseMatcher(object):
         return self.replacementString
 
     def _matchWithCut(self, input, pattern):
-        return pattern.sub(self.cut, input)
+        return pattern.sub(self.cut, input, 1)
     
     def _matchWithoutCut(self, input, pattern):
         self.foundEntities.extend(pattern.findall(input))
@@ -47,6 +47,8 @@ class BaseMatcher(object):
 
         for pattern in self.patterns:
             input = in_match(input, pattern)
+            if self.foundEntities:
+                break
         return (self.foundEntities, input)
 
 def baseMatcher_cut_log(*args, **kwargs):

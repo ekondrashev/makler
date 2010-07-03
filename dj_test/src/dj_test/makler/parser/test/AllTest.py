@@ -8,13 +8,13 @@ import codecs
 import json
 import logging
 from dj_test.makler.parser.test import BaseTestCase
-from dj_test.makler import findRoomCount
+from dj_test.makler import findRoomCount, findCoast
 
 logging.basicConfig(level=logging.DEBUG)
 
 TEST_ENTITIES = {
 'roomCount' : findRoomCount,
-#'coast',
+'coast' : findCoast,
 #'address',
 #'phoneNumbers',
 }
@@ -33,7 +33,6 @@ class Test(BaseTestCase):
 				originalValue = test[testEntity]
 				foundValue = finder(originalInput)
 				self.assertEqual(originalValue, foundValue)
-
 
 
 if __name__ == "__main__":

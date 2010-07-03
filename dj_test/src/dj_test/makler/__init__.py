@@ -21,7 +21,7 @@ ur'(?u)(\d+)\s*-?\s*к\.?\s*к?в?\.?',			 #1- к, 4 к кв
 
 COAST_PATTERNS = [
 ur'(?u)(\d+)\s*(у\.?\s*е\.?)/?\s*(месяц)?\.?',					 #300 у. е. 600уе
-ur'(?u)(\d+)\s*(грн)\s*/?\s*(месяц)?\.?'			 #3000 грн/ месяц.  
+ur'(?u)(\d+)\s*(грн?\.?)\s*/?\s*(месяц)?\.?'			 #3000 грн/ месяц.  
 ]
 
 FLAT_SQUARE_PATTERNS = [
@@ -38,12 +38,16 @@ FLAT_SQUARE_MATCHER = BaseMatcher(FLAT_SQUARE_PATTERNS, 'flat square')
 def dispatchCoast(result_set):
 	if len(result_set) != 3:
 		raise ValueError, 'Should be three values in result set: %s' % result_set
-	coast, currency, duration = result_set 
-	coast = int(coast)
-	currency = currency.replace(' ', '').replace('.', '')
-	if not duration:
-		duration = ''
-	return coast, currency, duration
+	coast, currency, period = result_set 
+	#coast = int(coast)
+	#currency = currency.replace(' ', '')#.replace('.', '')
+	if not period:
+		period = u''
+	result = {}
+	result[u'coast'] = coast
+	result[u'currency'] = currency
+	result[u'period'] = period
+	return result
 
 def dispatchOneInt(result_set):
 	if len(result_set) != 1:
@@ -55,6 +59,10 @@ def dispatchRoomCount(result_set):
 
 def dispatchSquare(result_set):
 	return dispatchOneInt(result_set)
+
+def findCoast(input):
+	(result_set, updated_input) = COAST_MATCHER.match(input)
+	return dispatchCoast(result_set)
 
 def findRoomCount(input):
 	(result_set, updated_input) = ROOM_COUNT_MATCHER.match(input)
