@@ -13,9 +13,9 @@ from dj_test.makler import findRoomCount, findCoast, findPhoneNumbers, findAddre
 logging.basicConfig(level=logging.DEBUG)
 
 TEST_ENTITIES = {
-#'roomCount' : findRoomCount,
-#'coast' : findCoast,
-#'phoneNumbers' : findPhoneNumbers,
+'roomCount' : findRoomCount,
+'coast' : findCoast,
+'phoneNumbers' : findPhoneNumbers,
 'address' : findAddress,
 }
 INPUT = "input.json"
