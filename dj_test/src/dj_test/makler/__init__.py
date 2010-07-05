@@ -3,7 +3,7 @@
 from dj_test.makler.parser.matcher import BaseMatcher
 
 TELEPHONE_PATTERNS = [ 
-ur'(?u)(8?0\d{2}\s?\-?\s?\d{3}\s?\-?\s?\d{2}\s?\-?\s?\d{2})' ,#0677401733, 050 552 34 74, 22, 093-912-04-41,
+ur'(?u)(8?0\d{2}\s?\-?\.?\s?\d{3}\s?\-?\s?\d{2}\s?\-?\s?\d{2})' ,#0677401733, 050 552 34 74, 22, 093-912-04-41, 096.487-72-05
 ur'(?u)(\d{3}\s?\-?\s?\d{2}\s?\-?\s?\d{2})',  #700 45 16, 700 - 45 - 16
 ur'(?u)(\d{7})', #7004516
 ]
@@ -67,3 +67,7 @@ def findCoast(input):
 def findRoomCount(input):
 	(result_set, updated_input) = ROOM_COUNT_MATCHER.match(input)
 	return dispatchRoomCount(result_set)
+
+def findPhoneNumbers(input):
+	(result_set, updated_input) = TELEPHONE_MATCHER.match(input)
+	return result_set
