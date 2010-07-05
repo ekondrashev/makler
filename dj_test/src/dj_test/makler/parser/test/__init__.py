@@ -14,4 +14,10 @@ class BaseTestCase(unittest.TestCase):
 			unittest.TestCase.assertEqual(self, value1, value2, 'Not equals: %s != %s' %(value1, value2) )
 
 	def assertEqualsDicts(self, dict1, dict2):
-		unittest.TestCase.assertEqual(self, dict1, dict2, 'Not equals: %s != %s' %(dict1, dict2) )
+		unittest.TestCase.assertEqual(self, dict1, dict2, 'Not equals: %s != %s' % (self._dictToStr(dict1), self._dictToStr(dict2)) )
+
+	def _dictToStr(self, dict):
+		dictStr=u''
+		for key, val in dict.items():
+			dictStr += "'%s' : '%s'" % (key, val)
+		return dictStr

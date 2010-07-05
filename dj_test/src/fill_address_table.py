@@ -12,7 +12,7 @@ import csv
 import codecs
 import logging
 
-from dj_test.makler.models import Address, Street
+from dj_test.makler.models import Address, Street, StreetFreak
 
 DELETE_OLD_RECORDS = True
 
@@ -21,6 +21,7 @@ TARGET_TXT_FILE = 'streets.txt'
 TARGET_CSV_FILE = 'streets.csv'
 STREET_FREAKS = {
 'Нежинская' : ['Неженская'],
+'Ильфа и Петрова' : ['Ильфа Петрова']
 }
 
 logging.basicConfig(level=logging.DEBUG)
@@ -61,7 +62,22 @@ def txt_to_db():
         address = Address(street = street, corner_street = street, number = street_number)
         address.save()
 
+def update_street_freas():
+    for street, street_freaks in STREET_FREAKS.items():
+        streetObj = Street.objects.filter(name=street)[0]
+        if not (streetObj):
+            logging.debug('Street not found: %s' % (street))
+        for freak in street_freaks:
+            present_freaks = StreetFreak.objects.filter(street = streetObj, name = freak)
+            if len(present_freaks) != 1:
+                freakObj = StreetFreak(street = streetObj, name = freak)
+                freakObj.save()
+                logging.debug('Added StreetFreak: %s' % (freak))
+            else:
+                logging.debug('StreetFreak already exists: %s' % (freak))
+            
+        
 if __name__ == '__main__':
-	code the street freaks!!
-    csv_to_txt()
-    txt_to_db()
+    #update_street_freas()
+    #csv_to_txt()
+    #txt_to_db()

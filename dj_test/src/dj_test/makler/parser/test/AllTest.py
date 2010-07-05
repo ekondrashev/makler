@@ -8,15 +8,15 @@ import codecs
 import json
 import logging
 from dj_test.makler.parser.test import BaseTestCase
-from dj_test.makler import findRoomCount, findCoast, findPhoneNumbers
+from dj_test.makler import findRoomCount, findCoast, findPhoneNumbers, findAddress
 
 logging.basicConfig(level=logging.DEBUG)
 
 TEST_ENTITIES = {
-'roomCount' : findRoomCount,
-'coast' : findCoast,
-'phoneNumbers' : findPhoneNumbers,
-#'address',
+#'roomCount' : findRoomCount,
+#'coast' : findCoast,
+#'phoneNumbers' : findPhoneNumbers,
+'address' : findAddress,
 }
 INPUT = "input.json"
 class Test(BaseTestCase):
