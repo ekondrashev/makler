@@ -21,7 +21,9 @@ TARGET_TXT_FILE = 'streets.txt'
 TARGET_CSV_FILE = 'streets.csv'
 STREET_FREAKS = {
 'Нежинская' : ['Неженская'],
-'Ильфа и Петрова' : ['Ильфа Петрова']
+'Ильфа и Петрова' : ['Ильфа Петрова'],
+'Екатерининская' : ['Екатериненская'],
+'Льва Толстого' : ['Л.Толстого'],
 }
 
 logging.basicConfig(level=logging.DEBUG)
@@ -78,6 +80,6 @@ def update_street_freas():
             
         
 if __name__ == '__main__':
-    #update_street_freas()
+    update_street_freas()
     #csv_to_txt()
     #txt_to_db()

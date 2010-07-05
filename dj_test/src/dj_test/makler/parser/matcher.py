@@ -16,7 +16,7 @@ class BaseMatcher(object):
     classdocs
     '''
 
-    def __init__(self, patterns_str, lookingEntityName, replaceMatches = True, replacementString = ''):
+    def __init__(self, patterns_str, lookingEntityName, replaceMatches = True, replacementString = '', foundEntitiesLimit = 1):
         self.patterns = []
         for p in patterns_str:
             self.patterns.append(re.compile(p))
@@ -24,6 +24,7 @@ class BaseMatcher(object):
         self.lookingEntityName = lookingEntityName.upper()
         self.replaceMatches = replaceMatches
         self.replacementString = replacementString
+        self.foundEntitiesLimit = foundEntitiesLimit
 
     def cut(self, match):
         for i in range(0,len(match.groups())):
@@ -32,7 +33,10 @@ class BaseMatcher(object):
         return self.replacementString
 
     def _matchWithCut(self, input, pattern):
-        return pattern.sub(self.cut, input, 1)
+        limit = self.foundEntitiesLimit
+        if self.foundEntitiesLimit < 0:
+            limit += 1
+        return pattern.sub(self.cut, input, limit)
     
     def _matchWithoutCut(self, input, pattern):
         self.foundEntities.extend(pattern.findall(input))
@@ -47,7 +51,7 @@ class BaseMatcher(object):
 
         for pattern in self.patterns:
             input = in_match(input, pattern)
-            if self.foundEntities:
+            if len(self.foundEntities) == self.foundEntitiesLimit:
                 break
         return (self.foundEntities, input)
 

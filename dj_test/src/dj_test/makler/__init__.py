@@ -11,7 +11,7 @@ ur'(?u)(\d{7})', #7004516
 
 #Возвращаемый результат один 
 ROOM_COUNT_PATTERNS = [
-ur'(?u)(\d+)\s*х',					   
+ur'(?u)(\d+)\s*-?\s*х',					   
 ur'(?u)(\d+)\s*-?\s*х?\s*ком\.?\s*квартиру',	 #2- х ком. квартиру, 1 ком квартиру
 ur'(?u)(\d+)\s*комн\.?\s*(?:\w+\.?)?\s*кв\.?',   #4 комн самост. кв. #самост???
 ur'(?u)(\d+)\s*-?\s*к\.?\s*к?в?\.?',			 #1- к, 4 к кв
@@ -38,7 +38,7 @@ ur'(?u)([а-яА-Я]{%d,})\s*,\s*([а-яА-Я]{%d,})' % (STREET_MIN_CHAR_COUNT, 
 ur'(?u)([а-яА-Я]{%d,})' % (STREET_MIN_CHAR_COUNT),
 ]
 
-TELEPHONE_MATCHER = BaseMatcher(TELEPHONE_PATTERNS, 'telphones')
+TELEPHONE_MATCHER = BaseMatcher(TELEPHONE_PATTERNS, 'telphones', foundEntitiesLimit = -1)
 ROOM_COUNT_MATCHER = BaseMatcher(ROOM_COUNT_PATTERNS, 'room count')
 COAST_MATCHER = BaseMatcher(COAST_PATTERNS, 'coast')
 FLAT_SQUARE_MATCHER = BaseMatcher(FLAT_SQUARE_PATTERNS, 'flat square')
