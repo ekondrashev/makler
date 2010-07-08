@@ -14,7 +14,7 @@ import logging
 
 from dj_test.makler.models import Address, Street, StreetFreak
 
-DELETE_OLD_RECORDS = True
+DELETE_OLD_RECORDS = False
 
 TARGET_CITY = u'Одесса'
 TARGET_TXT_FILE = 'streets.txt'
@@ -80,6 +80,6 @@ def update_street_freas():
             
         
 if __name__ == '__main__':
-    update_street_freas()
+    #update_street_freas()
     #csv_to_txt()
-    #txt_to_db()
+    txt_to_db()

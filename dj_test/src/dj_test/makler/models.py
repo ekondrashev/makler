@@ -22,10 +22,13 @@ class Room(models.Model):
     flat = models.ForeignKey(Flat)
     square = models.IntegerField()
 
-class Lease(models.Model):
-    flat = models.ForeignKey(Flat)
-    price = models.IntegerField()
-    period = models.CharField(max_length=50)
-    comments = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
+class Advertisement(models.Model):
+    text = models.CharField(max_length=200)
+    pub_date = models.DateTimeField('date published', auto_now=True)
 
+class Lease(models.Model):
+    advertisement = models.ForeignKey(Advertisement)
+    flat = models.ForeignKey(Flat)
+    price = models.FloatField()
+    currency = models.CharField(max_length=10)
+    period = models.CharField(max_length=50)
