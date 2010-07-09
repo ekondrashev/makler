@@ -14,7 +14,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 TEST_ENTITIES = {
 'roomCount' : findRoomCount,
-'coast' : findCoast,
+'cost' : findCoast,
 'phoneNumbers' : findPhoneNumbers,
 'address' : findAddress,
 }

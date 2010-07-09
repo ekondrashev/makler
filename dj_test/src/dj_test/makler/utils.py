@@ -12,7 +12,7 @@ def collection_str(collection):
 		brackets = '(%s)'
 		single_add =','
 	else:
-		return str(collection)
+		return unicode(collection)
 	items = ', '.join([collection_str(x) for x in collection])
 	if len(collection) == 1:
 		items += single_add

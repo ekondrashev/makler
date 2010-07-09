@@ -80,6 +80,6 @@ def update_street_freas():
             
         
 if __name__ == '__main__':
-    #update_street_freas()
+    update_street_freas()
     #csv_to_txt()
-    txt_to_db()
+    #txt_to_db()

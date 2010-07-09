@@ -13,6 +13,8 @@ urlpatterns = patterns('',
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
+    (r'^makler/json', 'dj_test.makler.views.json'),
+    (r'^makler/test/$', 'dj_test.makler.views.test'),
     (r'^makler/$', 'dj_test.makler.views.index'),
     (r'^makler/(?P<adv_id>\d+)/$', 'dj_test.makler.views.detail'),
     (r'^makler/addAdv/$', 'dj_test.makler.views.addAdv'),

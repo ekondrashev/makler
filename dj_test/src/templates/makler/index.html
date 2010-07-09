@@ -1,0 +1,43 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script> 
+ 
+<script type="text/javascript"> 
+$(document).ready(function(){
+    $('#adv_text').keypress(function(){
+    	var adv=$("#adv_text").attr("value");
+        $.getJSON('/makler/json', {adv_text:adv}, function(json){
+            $('#json').html('');
+            $('#json').append('Room count: ' + json.roomCount + '<br>');
+            $('#json').append('Phone numbers: ' + json.phoneNumbers + '<br>');
+            
+            $('#json').append('Cost.value: ' + json.cost.value + '<br>');
+            $('#json').append('Cost.currency: ' + json.cost.currency + '<br>');
+            $('#json').append('Cost.period: ' + json.cost.period + '<br>');
+            $('#json').append('Address.street1: ' + json.address.street1 + '<br>');
+            $('#json').append('Address.street2: ' + json.address.street2 + '<br>');
+        });
+    })
+});
+
+
+</script>
+
+
+{% if latest_adv_list %}
+    <ul>
+    {% for adv in latest_adv_list %}
+        <li><a href="/makler/{{ adv.id }}/">{{ adv.text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No advertisement are available.</p>
+{% endif %}
+
+<form action="/makler/addAdv/" method="post">
+<textarea name="adv_text" id="adv_text"> </textarea>
+<input type="submit" value="Add" />
+<br>
+<div id="json"> test</div>
+</br>
+</form>

@@ -81,3 +81,5 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'dj_test.makler',
 )
+
+DEFAULT_CHARSET = 'utf-8'

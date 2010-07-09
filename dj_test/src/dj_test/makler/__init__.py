@@ -54,7 +54,7 @@ def dispatchCoast(result_set):
 	if not period:
 		period = u''
 	result = {}
-	result[u'coast'] = coast
+	result[u'value'] = coast
 	result[u'currency'] = currency
 	result[u'period'] = period
 	return result
