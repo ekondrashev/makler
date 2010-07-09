@@ -1,7 +1,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script> 
- 
+<script type='text/javascript' src='/makler/media/jquery/jquery-1.4.2.min.js'></script>
+<script type='text/javascript' src='/makler/media/jquery/jquery.autocomplete.js'></script>
+<!-- 
+<script type="text/javascript" src="/makler/media/jquery/lib/jquery.js"></script>
+<script type='text/javascript' src='/makler/media/jquery/lib/jquery.bgiframe.min.js'></script>
+<script type='text/javascript' src='/makler/media/jquery/lib/jquery.ajaxQueue.js'></script>
+<script type='text/javascript' src='/makler/media/jquery/lib/thickbox-compressed.js'></script>
+-->
+
+<link rel="stylesheet" type="text/css" href='/makler/media/jquery/jquery.autocomplete.css'/>
+<link rel="stylesheet" type="text/css" href='/makler/media/jquery/lib/thickbox.css' />
+<link rel="stylesheet" type="text/css" href='/makler/media/main.css' />
+
 <script type="text/javascript"> 
 $(document).ready(function(){
     $('#adv_text').keypress(function(){
@@ -37,6 +48,7 @@ $(document).ready(function(){
 <form action="/makler/addAdv/" method="post">
 <textarea name="adv_text" id="adv_text"> </textarea>
 <input type="submit" value="Add" />
+{{ form.as_p }}
 <br>
 <div id="json"> test</div>
 </br>

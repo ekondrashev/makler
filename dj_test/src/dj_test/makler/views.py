@@ -4,12 +4,15 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response, get_object_or_404
 from dj_test.makler.adv_to_json import getJson
+from dj_test.makler.forms import SampleForm
 
 def index(request):
     latest_adv_list = Advertisement.objects.all().order_by('-pub_date')[:5]
     t = loader.get_template('makler/index.html')
+    f = SampleForm()
     c = Context({
         'latest_adv_list': latest_adv_list,
+        'form' : f,
     })
     return HttpResponse(t.render(c))
 
@@ -29,6 +32,6 @@ def detail(request, adv_id):
 
 def addAdv(request):
     adv_text = request.POST['adv_text']
-    adv = Advertisement(text = adv_text)
+    adv = Advertisement(text=adv_text)
     adv.save()
     return HttpResponseRedirect(reverse('dj_test.makler.views.index'))

@@ -19,4 +19,6 @@ urlpatterns = patterns('',
     (r'^makler/(?P<adv_id>\d+)/$', 'dj_test.makler.views.detail'),
     (r'^makler/addAdv/$', 'dj_test.makler.views.addAdv'),
     (r'^admin/', include(admin.site.urls)),
+    (r'^makler/media(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': 'D:/currworkspace/dj_test/src/templates/makler\media'}),
 )
