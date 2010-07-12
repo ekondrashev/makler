@@ -7,7 +7,7 @@ import unittest
 import codecs
 import json
 import logging
-from dj_test.makler.parser.test import BaseTestCase
+from tests.parser.base_test_case import BaseTestCase
 from dj_test.makler import findRoomCount, findCoast, findPhoneNumbers, findAddress
 
 logging.basicConfig(level=logging.DEBUG)
@@ -23,7 +23,6 @@ class Test(BaseTestCase):
 
 	def testName(self):
 		input = codecs.open(INPUT, "r", "utf-8" ).read()
-		print input
 		input1 = json.loads(input)
 		for number, test in input1.iteritems():
 			originalInput = test['originalInput']
