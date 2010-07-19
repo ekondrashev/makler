@@ -3,6 +3,11 @@ Created on 07.05.2010
 
 @author: ekondrashev
 '''
+
+import os
+ENVIRONMENT_VARIABLE = "DJANGO_SETTINGS_MODULE"
+os.environ[ENVIRONMENT_VARIABLE] = 'dj_test.settings'
+
 import unittest
 import codecs
 import json
@@ -11,6 +16,8 @@ from tests.parser.base_test_case import BaseTestCase
 from dj_test.makler import findRoomCount, findCoast, findPhoneNumbers, findAddress
 
 logging.basicConfig(level=logging.DEBUG)
+
+
 
 TEST_ENTITIES = {
 'roomCount' : findRoomCount,

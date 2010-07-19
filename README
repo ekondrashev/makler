@@ -1,0 +1,17 @@
+
+How to taste it
+
+what you need is:
+- python 2.5 or higher installed
+- django framework installed (http://www.djangoproject.com/ take the latest one)
+- python-aspects-1.3 (http://www.cs.tut.fi/~ask/aspects/index.shtml)
+
+how to run web app:
+- cd dj_test/src/dj_test folder
+- run "python manage.py runserver"
+- take a look at localhost:8000/makler page from your browser
+
+how to run tests:
+- set your PYTHONPATH, for example "set PYTHONPATH=%PYTHONPATH%;D:\currworkspace\dj_test\src"
+- cd to tests\parser, for example: "cd D:\currworkspace\dj_test\src\tests\parser"
+- run "python bunch_test.py"

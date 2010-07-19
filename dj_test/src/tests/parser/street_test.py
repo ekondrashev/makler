@@ -4,6 +4,10 @@ Created on 12.07.2010
 
 @author: ekondrashev
 '''
+import os
+ENVIRONMENT_VARIABLE = "DJANGO_SETTINGS_MODULE"
+os.environ[ENVIRONMENT_VARIABLE] = 'dj_test.settings'
+
 import unittest
 from tests.parser.base_test_case import BaseTestCase
 from dj_test.makler.parser.street_matcher import StreetMatcher
