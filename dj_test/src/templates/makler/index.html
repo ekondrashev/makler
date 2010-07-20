@@ -19,6 +19,7 @@ $(document).ready(function(){
     	var adv=$("#adv_text").attr("value");
         $.getJSON('/makler/json', {adv_text:adv}, function(json){
             $('#json').html('');
+            $('#roomCount').val(json.roomCount);
             $('#json').append('Room count: ' + json.roomCount + '<br>');
             $('#json').append('Phone numbers: ' + json.phoneNumbers + '<br>');
             
@@ -51,5 +52,7 @@ $(document).ready(function(){
 {{ form.as_p }}
 <br>
 <div id="json"> test</div>
+<b>Parsed room count:</b><br>
+   <input id="roomCount" name="roomCount" type="text" disabled="disabled">
 </br>
 </form>
