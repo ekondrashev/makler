@@ -18,16 +18,13 @@ $(document).ready(function(){
     $('#adv_text').keypress(function(){
     	var adv=$("#adv_text").attr("value");
         $.getJSON('/makler/json', {adv_text:adv}, function(json){
-            $('#json').html('');
             $('#roomCount').val(json.roomCount);
-            $('#json').append('Room count: ' + json.roomCount + '<br>');
-            $('#json').append('Phone numbers: ' + json.phoneNumbers + '<br>');
-            
-            $('#json').append('Cost.value: ' + json.cost.value + '<br>');
-            $('#json').append('Cost.currency: ' + json.cost.currency + '<br>');
-            $('#json').append('Cost.period: ' + json.cost.period + '<br>');
-            $('#json').append('Address.street1: ' + json.address.street1 + '<br>');
-            $('#json').append('Address.street2: ' + json.address.street2 + '<br>');
+            $('#phoneNumbers').val(json.phoneNumbers);
+            $('#coastValue').val(json.cost.value);
+            $('#coastCurrency').val(json.cost.currency);
+            $('#coastPeriod').val(json.cost.period);
+            $('#street1').val(json.address.street1);
+            $('#street2').val(json.address.street2);
         });
     })
 });
@@ -51,8 +48,32 @@ $(document).ready(function(){
 <input type="submit" value="Add" />
 {{ form.as_p }}
 <br>
-<div id="json"> test</div>
-<b>Parsed room count:</b><br>
+
+<b>Room count:</b><br>
    <input id="roomCount" name="roomCount" type="text" disabled="disabled">
+</br>
+
+<b>Phone numbers:</b><br>
+   <input id="phoneNumbers" name="phoneNumbers" type="text" disabled="disabled">
+</br>
+
+<b>Coast value:</b><br>
+   <input id="coastValue" name="coastValue" type="text" disabled="disabled">
+</br>
+
+<b>Coast currency:</b><br>
+   <input id="coastCurrency" name="coastCurrency" type="text" disabled="disabled">
+</br>
+
+<b>Coast period:</b><br>
+   <input id="coastPeriod" name="coastPeriod" type="text" disabled="disabled">
+</br>
+
+<b>Street1:</b><br>
+   <input id="street1" name="street1" type="text" disabled="disabled">
+</br>
+
+<b>Street2:</b><br>
+   <input id="street2" name="street2" type="text" disabled="disabled">
 </br>
 </form>
