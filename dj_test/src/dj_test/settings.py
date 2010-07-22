@@ -1,4 +1,9 @@
 # Django settings for dj_test project.
+import os
+
+# from http://morethanseven.net/2009/02/11/django-settings-tip-setting-relative-paths.html
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+TEMPLATES_ROOT=os.path.join(SITE_ROOT, '../templates')
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -10,7 +15,8 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'D:\\currworkspace\\dj_test\\sqlite.db'             # Or path to database file if using sqlite3.
+DATABASE_NAME = os.path.join(SITE_ROOT, '../../sqlite.db')
+#DATABASE_NAME = 'D:\\currworkspace\\dj_test\\sqlite.db'             # Or path to database file if using sqlite3.
 #DATABASE_NAME = '/home/eugene/Develop/makler/dj_test/sqlite.db'             # Or path to database file if using sqlite3.
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
@@ -67,7 +73,8 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'dj_test.urls'
 
 TEMPLATE_DIRS = (
-    "D:/currworkspace/dj_test/src/templates"
+    TEMPLATES_ROOT
+    #"D:/currworkspace/dj_test/src/templates"
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
