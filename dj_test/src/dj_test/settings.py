@@ -1,7 +1,17 @@
 # Django settings for dj_test project.
+import os
+import django
+
+# calculated paths for django and the site
+# used as starting points for various other paths
+DJANGO_ROOT = os.path.dirname(os.path.realpath(django.__file__))
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+TEMPLATES_ROOT = os.path.join(SITE_ROOT, 'templates')
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
@@ -10,8 +20,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'D:\\currworkspace\\dj_test\\sqlite.db'             # Or path to database file if using sqlite3.
-#DATABASE_NAME = '/home/eugene/Develop/makler/dj_test/sqlite.db'             # Or path to database file if using sqlite3.
+DATABASE_NAME = os.path.join(SITE_ROOT, '../../sqlite.db') 
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
@@ -68,7 +77,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'dj_test.urls'
 
 TEMPLATE_DIRS = (
-    "D:/currworkspace/dj_test/src/templates"
+    TEMPLATES_ROOT,
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

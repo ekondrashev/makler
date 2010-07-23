@@ -1,9 +1,12 @@
+import os
 from django.conf.urls.defaults import *
+from settings import TEMPLATES_ROOT
 
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
+
+MEDIA_ROOT = os.path.join(TEMPLATES_ROOT, 'makler/media')
 urlpatterns = patterns('',
     # Example:
     # (r'^dj_test/', include('dj_test.foo.urls')),
@@ -20,5 +23,5 @@ urlpatterns = patterns('',
     (r'^makler/addAdv/$', 'dj_test.makler.views.addAdv'),
     (r'^admin/', include(admin.site.urls)),
     (r'^makler/media(?P<path>.*)$', 'django.views.static.serve',
-        {'document_root': 'D:/currworkspace/dj_test/src/templates/makler\media'}),
+        {'document_root': MEDIA_ROOT}),
 )
