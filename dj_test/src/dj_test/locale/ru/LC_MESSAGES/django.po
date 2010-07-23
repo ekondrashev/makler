@@ -1,0 +1,65 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-07-23 10:31+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\makler\forms.py:12
+msgid "Basketball"
+msgstr ""
+
+#: .\makler\forms.py:13
+msgid "Football"
+msgstr ""
+
+#: .\makler\forms.py:14
+msgid "Hockey"
+msgstr ""
+
+#: .\makler\forms.py:18
+msgid "Name"
+msgstr "Имя1"
+
+#: .\makler\forms.py:21
+msgid "Sports"
+msgstr ""
+
+#: .\templates\makler\index.html.py:54
+msgid "Room count:"
+msgstr "Количество комнат:"
+
+#: .\templates\makler\index.html.py:58
+msgid "Phone numbers:"
+msgstr ""
+
+#: .\templates\makler\index.html.py:62
+msgid "Coast value:"
+msgstr ""
+
+#: .\templates\makler\index.html.py:66
+msgid "Coast currency:"
+msgstr ""
+
+#: .\templates\makler\index.html.py:70
+msgid "Coast period:"
+msgstr ""
+
+#: .\templates\makler\index.html.py:74
+msgid "Street1:"
+msgstr ""
+
+#: .\templates\makler\index.html.py:78
+msgid "Street2:"
+msgstr ""
