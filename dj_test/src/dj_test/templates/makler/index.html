@@ -1,4 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{% load i18n %}
+
 
 <script type='text/javascript' src='/makler/media/jquery/jquery-1.4.2.min.js'></script>
 <script type='text/javascript' src='/makler/media/jquery/jquery.autocomplete.js'></script>
@@ -49,31 +51,31 @@ $(document).ready(function(){
 {{ form.as_p }}
 <br>
 
-<b>Room count:</b><br>
+<b>{% trans "Room count:" %}</b><br>
    <input id="roomCount" name="roomCount" type="text" disabled="disabled">
 </br>
 
-<b>Phone numbers:</b><br>
+<b>{% trans "Phone numbers:" %}</b><br>
    <input id="phoneNumbers" name="phoneNumbers" type="text" disabled="disabled">
 </br>
 
-<b>Coast value:</b><br>
+<b>{% trans "Coast value:" %}</b><br>
    <input id="coastValue" name="coastValue" type="text" disabled="disabled">
 </br>
 
-<b>Coast currency:</b><br>
+<b>{% trans "Coast currency:" %}</b><br>
    <input id="coastCurrency" name="coastCurrency" type="text" disabled="disabled">
 </br>
 
-<b>Coast period:</b><br>
+<b>{% trans "Coast period:" %}</b><br>
    <input id="coastPeriod" name="coastPeriod" type="text" disabled="disabled">
 </br>
 
-<b>Street1:</b><br>
+<b>{% trans "Street1:" %}</b><br>
    <input id="street1" name="street1" type="text" disabled="disabled">
 </br>
 
-<b>Street2:</b><br>
+<b>{% trans "Street2:" %}</b><br>
    <input id="street2" name="street2" type="text" disabled="disabled">
 </br>
 </form>
