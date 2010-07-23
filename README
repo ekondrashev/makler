@@ -25,3 +25,28 @@ how to run tests:
 - set your PYTHONPATH, for example "set PYTHONPATH=%PYTHONPATH%;D:\currworkspace\dj_test\src"
 - cd to tests\parser, for example: "cd D:\currworkspace\dj_test\src\tests\parser"
 - run "python bunch_test.py"
+
+internalization:
+* To use internalization in your py scripts:
+	from django.utils.translation import ugettext as _
+	...
+	SPORTS_CHOICES = (
+		('basketball', _('Basketball')),
+		('football', _('Football')),
+		('hockey', _('Hockey')),
+	)
+
+	Now, your Basketball, Football and Hockey strings will be translated into current locale.
+
+* To use internalization in your html files(remember that the flow is different for javascript files):
+	place {% load i18n %} some where in the begginning of html(or even template if any):
+	{% load i18n %}
+	...
+	{% trans "Room count:" %}
+
+* To generate messages file run(in project folder):
+	- python manage.py makemessages -l ru  	# to generate messages for ru language
+	- python manage.py compilemessages    	# to compile messages
+	- restart server
+
+There is much more about internalization, see http://docs.djangoproject.com/en/dev/topics/i18n
