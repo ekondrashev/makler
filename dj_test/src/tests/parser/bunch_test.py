@@ -17,8 +17,6 @@ from dj_test.makler import findRoomCount, findCoast, findPhoneNumbers, findAddre
 
 logging.basicConfig(level=logging.DEBUG)
 
-
-
 TEST_ENTITIES = {
 'roomCount' : findRoomCount,
 'cost' : findCoast,
