@@ -51,3 +51,5 @@ internalization:
 	- restart server
 
 There is much more about internalization, see http://docs.djangoproject.com/en/dev/topics/i18n
+
+PLEASE CONFIGURE YOUR IDE TO USED WHITESPACES INSTEAD OF TABS
