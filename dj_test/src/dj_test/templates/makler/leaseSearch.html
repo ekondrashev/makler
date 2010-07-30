@@ -1,0 +1,41 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{% load i18n %}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="/makler/media/jquery/plugins/tagit/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="/makler/media/jquery/plugins/tagit/css/master.css" rel="stylesheet" type="text/css" />
+    <link href="/makler/media/jquery/plugins/tagit/css/jquery-ui/jquery.ui.autocomplete.custom.css" rel="stylesheet" type="text/css"  />
+
+    <script src="/makler/media/jquery/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/makler/media/jquery/plugins/tagit/jquery-ui/jquery-ui-1.8.core-and-interactions.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/makler/media/jquery/plugins/tagit/jquery-ui/jquery-ui-1.8.autocomplete.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/makler/media/jquery/plugins/tagit/tag-it.js" type="text/javascript" charset="utf-8"></script>
+
+    <script>
+    $(document).ready(function(){
+        $("#streets").tagit({
+            availableTags:     
+            [
+             {% for street in streets %}
+            "{{ street.name }}",
+            {% endfor %}
+            ]
+
+        });
+    });
+    </script>
+
+</head>
+<body>
+
+<div id="content">
+    <form class="myform">
+            <label for="tags">{% trans "Streets:" %}</label>
+            <ul id="streets"></ul>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,10 +1,11 @@
 from django.template import Context, loader
-from dj_test.makler.models import Advertisement
+from dj_test.makler.models import Advertisement, Street
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response, get_object_or_404
 from dj_test.makler.adv_to_json import getJson
 from dj_test.makler.forms import SampleForm
+from django.utils import simplejson
 
 def index(request):
     latest_adv_list = Advertisement.objects.all().order_by('-pub_date')[:5]
@@ -13,6 +14,15 @@ def index(request):
     c = Context({
         'latest_adv_list': latest_adv_list,
         'form' : f,
+    })
+    return HttpResponse(t.render(c))
+
+def leaseSearch(request):
+    t = loader.get_template('makler/leaseSearch.html')
+    #streets = Street.objects.values_list('name', flat=True)
+    streets = Street.objects.all()
+    c = Context({
+        'streets' : streets,
     })
     return HttpResponse(t.render(c))
 
